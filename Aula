@@ -1,0 +1,29 @@
+#ATV.1
+
+import random
+
+try:
+    qnum = int(input("Quantidade de números: "))
+    
+    if qnum < 1 or qnum > 1000000:
+        print("A quantidade deve estar entre 1 e 1 milhão.")
+    else:
+        nums = []
+
+        for _ in range(qnum):
+            num = random.randint(1, 1000000)
+            nums.append(num)
+
+        print("Números inseridos: ")
+        for num in nums:
+            print(num)
+
+        arquivo = input("Digite o nome do arquivo para salvar os números: ")
+        with open(arquivo, 'w') as arquivo:
+            for num in nums:
+                arquivo.write(str(num) + '\n')
+        print(f'Os números foram salvos no arquivo {arquivo}.')
+except ValueError:
+    print("Por favor, insira um número válido.")
+except Exception as e:
+    print(f"Ocorreu um erro: {str(e)}")
